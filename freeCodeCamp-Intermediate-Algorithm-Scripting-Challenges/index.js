@@ -315,6 +315,7 @@ function myReplace(str, before, after) {
 // console.log(myReplace("His name is Tom", "Tom", "john"));  // should return "His name is John".
 // console.log(myReplace("Let us get back to more Coding", "Coding", "algorithms"));  // should return "Let us get back to more Algorithms".
 
+///////////////////////////////////////////////////////////////////////////////
 // DNA Pairing
 // https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/intermediate-algorithm-scripting/dna-pairing
 // The DNA strand is missing the pairing element. Take each character, get its pair, and return the results as a 2d array.
@@ -328,12 +329,48 @@ function myReplace(str, before, after) {
 // The character and its pair are paired up in an array, and all the arrays are grouped into one encapsulating array.
 
 const pairElement = str => {
+    // declare a new array to put the answer in thats the same length of the given str
+    const answerArr = [];
+    // fill an object with the proper pairings
+    const dnaPairs = {
+        G: ["G", "C"],
+        C: ["C", "G"],
+        A: ["A", "T"],
+        T: ["T", "A"]
+    };
+    // iterate through the given string. On each char check the object to see what is the proper pairing
+    for (let i = 0, len = str.length; i < len; i++) {
+        // iterate through the dna pairing object to find the match
+        for (const property in dnaPairs) {
+            if (str[i] === property) {
+                // and push the proper pairing into the new array
+                answerArr.push(dnaPairs[property]);
+            }
+        }
+    }
+    // return the newly filled array
+    return answerArr;
+}
+  
+// console.log(pairElement("GCG"));    // [["G", "C"], ["C", "G"], ["G", "C"]]
+// console.log(pairElement("ATCGA"));  // [["A","T"],["T","A"],["C","G"],["G","C"],["A","T"]]
+// console.log(pairElement("TTGAG"));  // [["T","A"],["T","A"],["G","C"],["A","T"],["G","C"]]
+// console.log(pairElement("CTCTA"));  // [["C","G"],["T","A"],["C","G"],["T","A"],["A","T"]]
+///////////////////////////////////////////////////////////////////////////////
+// Missing letters
+// https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/intermediate-algorithm-scripting/missing-letters
+// Find the missing letter in the passed letter range and return it.
+
+// If all letters are present in the range, return undefined.
+
+function fearNotLetter(str) {
     return str;
   }
   
-console.log(pairElement("GCG"));
-console.log(pairElement("ATCGA"));  // [["A","T"],["T","A"],["C","G"],["G","C"],["A","T"]]
-console.log(pairElement("TTGAG"));  // [["T","A"],["T","A"],["G","C"],["A","T"],["G","C"]]
-console.log(pairElement("CTCTA"));  // [["C","G"],["T","A"],["C","G"],["T","A"],["A","T"]]
+console.log(fearNotLetter("abce")); // 'd'
+console.log(fearNotLetter("abcdefghjklmno"));   // 'i'
+console.log(fearNotLetter("stvwx"));    // 'u'
+console.log(fearNotLetter("bcdf")); // 'e'
+console.log(fearNotLetter("abcdefghijklmnopqrstuvwxyz"));   // undefined
 ///////////////////////////////////////////////////////////////////////////////
 // 

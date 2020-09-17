@@ -466,29 +466,29 @@
 // Use Closure to Protect Properties Within an Object from Being Modified Externally
 // https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/object-oriented-programming/use-closure-to-protect-properties-within-an-object-from-being-modified-externally
 
-// function Bird() {
-//   let hatchedEgg = 10; // private variable
+function Bird() {
+  let hatchedEgg = 10; // private variable
 
-//   /* publicly available method that a bird object can use */
-//   this.getHatchedEggCount = function() { 
-//     return hatchedEgg;
-//   };
-// }
-// let ducky = new Bird();
-// ducky.getHatchedEggCount(); // returns 10
+  /* publicly available method that a bird object can use */
+  this.getHatchedEggCount = function() { 
+    return hatchedEgg;
+  };
+}
+let ducky = new Bird();
+ducky.getHatchedEggCount(); // returns 10
 
 // Change how weight is declared in the Bird function so it is a private variable. Then, create a method getWeight that returns the value of weight 15.
 
-// function Bird() {
-//     // private variable
-//     let weight = 15;
+function Bird() {
+    // private variable
+    let weight = 15;
 
-//     // privileged public access
-//     this.getWeight = function () {
-//         console.log(weight);
-//         return weight;
-//     }
-// }
+    // privileged public access
+    this.getWeight = function () {
+        console.log(weight);
+        return weight;
+    }
+}
 
 // const bird2 = new Bird();
 // console.log(bird2);
@@ -498,43 +498,43 @@
 // Understand the Immediately Invoked Function Expression (IIFE)
 // https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/object-oriented-programming/understand-the-immediately-invoked-function-expression-iife
 
-// (function () {
-//     console.log("Chirp, chirp!");
-//   })(); // this is an anonymous function expression that executes right away
-//   // Outputs "Chirp, chirp!" immediately
+(function () {
+    console.log("Chirp, chirp!");
+  })(); // this is an anonymous function expression that executes right away
+  // Outputs "Chirp, chirp!" immediately
 
 // Rewrite the function makeNest and remove its call so instead it's an anonymous immediately invoked function expression (IIFE).
 
-// function makeNest() {
-//     console.log("A cozy nest is ready");
-//     return "A cozy nest is ready";
-// }
+function makeNest() {
+    console.log("A cozy nest is ready");
+    return "A cozy nest is ready";
+}
   
-// console.log(makeNest());
+console.log(makeNest());
 
-// (function () {
-//     console.log("A cozy nest is ready");
-//     return "A cozy nest is ready";
-// })();
+(function () {
+    console.log("A cozy nest is ready");
+    return "A cozy nest is ready";
+})();
 
 ///////////////////////////////////////////////////////////////////////////////
 // Use an IIFE to Create a Module
 // https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/object-oriented-programming/use-an-iife-to-create-a-module
 
-// let motionModule = (function () {
-//   return {
-//     glideMixin: function(obj) {
-//       obj.glide = function() {
-//         console.log("Gliding on the water");
-//       };
-//     },
-//     flyMixin: function(obj) {
-//       obj.fly = function() {
-//         console.log("Flying, wooosh!");
-//       };
-//     }
-//   }
-// })(); // The two parentheses cause the function to be immediately invoked
+let motionModule = (function () {
+  return {
+    glideMixin: function(obj) {
+      obj.glide = function() {
+        console.log("Gliding on the water");
+      };
+    },
+    flyMixin: function(obj) {
+      obj.fly = function() {
+        console.log("Flying, wooosh!");
+      };
+    }
+  }
+})(); // The two parentheses cause the function to be immediately invoked
 
 // motionModule.glideMixin(duck);
 // duck.glide();
