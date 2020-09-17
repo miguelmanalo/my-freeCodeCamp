@@ -440,4 +440,57 @@ function uniteUnique (arr) {
 // console.log(uniteUnique([1, 2, 3], [5, 2, 1, 4], [2, 1], [6, 7, 8])); // [1, 2, 3, 5, 4, 6, 7, 8]
 
 ///////////////////////////////////////////////////////////////////////////////
+// Convert HTML Entities
+// https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/intermediate-algorithm-scripting/convert-html-entities
+// Convert the characters &, <, >, " (double quote), and ' (apostrophe), in a string to their corresponding HTML entities.
+
+function convertHTML(str) {
+    // create an object with the key value pairs being the HTML versions of the symbols
+    const htmlSymbols = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&apos;'
+    };
+    const justSymbols = Object.keys(htmlSymbols);
+    // convert the given string into an array and split it into individual letters
+    const splitStr = str.split('');
+    // iterate thru the array and when it finds a value to be replaced, splice out the old value and put in the replacement
+    for (let i = 0, len = splitStr.length; i < len; i++) {
+        if (justSymbols.includes(splitStr[i])) splitStr.splice(i, 1, htmlSymbols[splitStr[i]]);
+    }
+    // join the mutated array back together and return it
+    return splitStr.join('');
+}
+  
+// console.log(convertHTML("Dolce & Gabbana"));  // "Dolce &amp; Gabbana"
+// console.log(convertHTML("Hamburgers < Pizza < Tacos"));  // "Hamburgers &lt; Pizza &lt; Tacos"
+// console.log(convertHTML("Sixty > twelve"));  // "Sixty &gt; twelve"
+// console.log(convertHTML('Stuff in "quotation marks"'));  // "Stuff in &quot;quotation marks&quot;"
+// console.log(convertHTML("Schindler's List"));  // "Schindler&apos;s List"
+// console.log(convertHTML("<>"));  // "&lt;&gt;"
+// console.log(convertHTML("abc"));  // "abc"
+
+///////////////////////////////////////////////////////////////////////////////
+// Sum All Odd Fibonacci Numbers
+// https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/intermediate-algorithm-scripting/sum-all-odd-fibonacci-numbers
+// Given a positive integer num, return the sum of all odd Fibonacci numbers that are less than or equal to num.
+
+// The first two numbers in the Fibonacci sequence are 1 and 1. Every additional number in the sequence is the sum of the two previous numbers. The first six numbers of the Fibonacci sequence are 1, 1, 2, 3, 5 and 8.
+
+// For example, sumFibs(10) should return 10 because all odd Fibonacci numbers less than or equal to 10 are 1, 1, 3, and 5.
+
+function sumFibs(num) {
+    return num;
+}
+  
+console.log(sumFibs(1)); // a number
+console.log(sumFibs(1000)); // 1785
+console.log(sumFibs(4000000)); // 4613732
+console.log(sumFibs(4)); // 5
+console.log(sumFibs(75024)); // 60696
+console.log(sumFibs(75025)); // 135721
+
+///////////////////////////////////////////////////////////////////////////////
 // 
