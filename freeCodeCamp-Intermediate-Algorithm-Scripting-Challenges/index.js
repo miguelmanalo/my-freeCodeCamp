@@ -418,14 +418,26 @@ const fearNotLetter = str => {
 
 // Check the assertion tests for examples.
 
-const uniteUnique = arr => {
-    
-    return arr;
+function uniteUnique (arr) {
+    // declare a blank answer array
+    const answerArr = [];
+    // copy all the values in the first array of the argument to the answer array
+    answerArr.push(...arguments[0]);
+    // use two for loops
+    // one to traverse the remaining arrays
+    outerLoop: for (let i = 1, len = arguments.length; i < len; i++) {
+        // the other to traverse inside the arrays
+        eachItemLoop: for (let j = 0, lenJ = arguments[i].length; j < lenJ; j++) {
+            // for each value inside the array use the includes method on the answer array to see if the value is already in there, if it isn't in there, push it in to the answer array
+            if (!answerArr.includes(arguments[i][j])) answerArr.push(arguments[i][j]);
+        }
+    }
+    return answerArr;
 }
   
-console.log(uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]));  // [1, 3, 2, 5, 4]
-console.log(uniteUnique([1, 2, 3], [5, 2, 1])); // [1, 2, 3, 5]
-console.log(uniteUnique([1, 2, 3], [5, 2, 1, 4], [2, 1], [6, 7, 8])); // [1, 2, 3, 5, 4, 6, 7, 8]
+// console.log(uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]));  // [1, 3, 2, 5, 4]
+// console.log(uniteUnique([1, 2, 3], [5, 2, 1])); // [1, 2, 3, 5]
+// console.log(uniteUnique([1, 2, 3], [5, 2, 1, 4], [2, 1], [6, 7, 8])); // [1, 2, 3, 5, 4, 6, 7, 8]
 
 ///////////////////////////////////////////////////////////////////////////////
 // 
