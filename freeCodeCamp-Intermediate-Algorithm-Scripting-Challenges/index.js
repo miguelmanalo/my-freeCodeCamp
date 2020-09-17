@@ -363,9 +363,43 @@ const pairElement = str => {
 
 // If all letters are present in the range, return undefined.
 
-function fearNotLetter(str) {
-    return str;
-  }
+const fearNotLetter = str => {
+    // make an object with every letter in the alphabet and the value for each letter is the letter that comes after it
+    const alphaAfter = {
+        a: 'b',
+        b: 'c',
+        c: 'd',
+        d: 'e',
+        e: 'f',
+        f: 'g',
+        g: 'h',
+        h: 'i',
+        i: 'j',
+        j: 'k',
+        k: 'l',
+        l: 'm',
+        m: 'n',
+        n: 'o',
+        o: 'p',
+        p: 'q',
+        q: 'r',
+        r: 's',
+        s: 't',
+        t: 'u',
+        u: 'v',
+        v: 'w',
+        w: 'x',
+        x: 'y',
+        y: 'z',
+        z: undefined, // z will be undefined        
+    }
+    // iterate through the given string and check it against the object to see if the following letter is the correct one
+    for (let i = 0, len = str.length; i < len; i++) {
+        // if it is found that a letter is missing, return the value for that key value pair
+        if (str[i + 1] !== alphaAfter[str[i]]) return alphaAfter[str[i]];
+    }
+    return undefined;
+}
   
 console.log(fearNotLetter("abce")); // 'd'
 console.log(fearNotLetter("abcdefghjklmno"));   // 'i'
