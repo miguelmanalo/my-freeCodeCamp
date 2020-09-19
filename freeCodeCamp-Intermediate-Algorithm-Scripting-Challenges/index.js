@@ -481,6 +481,7 @@ function convertHTML(str) {
 /// ////////////////////////////////////////////////////////////////////////////
 // Sum All Odd Fibonacci Numbers
 // https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/intermediate-algorithm-scripting/sum-all-odd-fibonacci-numbers
+
 // Given a positive integer num, return the sum of all odd Fibonacci numbers that are less than or equal to num.
 
 // The first two numbers in the Fibonacci sequence are 1 and 1. Every additional number in the sequence is the sum of the two previous numbers. The first six numbers of the Fibonacci sequence are 1, 1, 2, 3, 5 and 8.
@@ -521,13 +522,25 @@ function sumFibs(num) {
   return fibSum;
 }
 
-console.log(sumFibs(1)); // 1
-console.log(sumFibs(10)); // 10
-console.log(sumFibs(1000)); // 1785
-console.log(sumFibs(4000000)); // 4613732
-console.log(sumFibs(4)); // 5
-console.log(sumFibs(75024)); // 60696
-console.log(sumFibs(75025)); // 135721
+// console.log(sumFibs(1)); // 1
+// console.log(sumFibs(10)); // 10
+// console.log(sumFibs(1000)); // 1785
+// console.log(sumFibs(4000000)); // 4613732
+// console.log(sumFibs(4)); // 5
+// console.log(sumFibs(75024)); // 60696
+// console.log(sumFibs(75025)); // 135721
 
 /// //////////////////////////////////////////////////////////////////////
-//
+// Sum All Primes
+// https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/intermediate-algorithm-scripting/sum-all-primes
+
+// A prime number is a whole number greater than 1 with exactly two divisors: 1 and itself. For example, 2 is a prime number because it is only divisible by 1 and 2. In contrast, 4 is not prime since it is divisible by 1, 2 and 4.
+
+// Rewrite sumPrimes so it returns the sum of all prime numbers that are less than or equal to num.
+
+function sumPrimes(num) {
+  return num;
+}
+
+console.log(sumPrimes(10)); // should return 17
+console.log(sumPrimes(977)); // should return 73156
