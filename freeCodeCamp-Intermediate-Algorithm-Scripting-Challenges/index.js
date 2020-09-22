@@ -256,7 +256,7 @@ const translatePigLatin = (str) => {
       ) {
         // if the vowel is anywhere but the first letter slice away everything before the vowel and store it somewhere and then slice away the vowel and everything after it
         // stick together new First Half plus new Second Half plus 'ay' at the end return
-        // return arrStr.slice(i).concat(arrStr.slice(0, i).concat('ay')).join('');
+        return arrStr.slice(i).concat(arrStr.slice(0, i).concat('ay')).join('');
       }
     }
   }
@@ -357,10 +357,10 @@ const pairElement = (str) => {
   return answerArr;
 };
 
-console.log(pairElement('GCG')); // [["G", "C"], ["C", "G"], ["G", "C"]]
-console.log(pairElement('ATCGA')); // [["A","T"],["T","A"],["C","G"],["G","C"],["A","T"]]
-console.log(pairElement('TTGAG')); // [["T","A"],["T","A"],["G","C"],["A","T"],["G","C"]]
-console.log(pairElement('CTCTA')); // [["C","G"],["T","A"],["C","G"],["T","A"],["A","T"]]
+// console.log(pairElement('GCG')); // [["G", "C"], ["C", "G"], ["G", "C"]]
+// console.log(pairElement('ATCGA')); // [["A","T"],["T","A"],["C","G"],["G","C"],["A","T"]]
+// console.log(pairElement('TTGAG')); // [["T","A"],["T","A"],["G","C"],["A","T"],["G","C"]]
+// console.log(pairElement('CTCTA')); // [["C","G"],["T","A"],["C","G"],["T","A"],["A","T"]]
 /// ////////////////////////////////////////////////////////////////////////////
 // Missing letters
 // https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/intermediate-algorithm-scripting/missing-letters
@@ -490,7 +490,7 @@ function convertHTML(str) {
 
 function sumFibs(num) {
   // create a function that just finds fibonacci numbers
-  // setup a cache to keep all the calced numbers in
+  // setup a cache to keep all the calculated numbers in
   const cache = [0, 1, 1];
   // this will get summed and returned
   let fibSum = 0;
@@ -503,7 +503,7 @@ function sumFibs(num) {
     if (index < 3) return 1;
     // start at the end of the cache we put in
     for (let i = 2; i < index; i += 1) {
-      // calc what to add to the cache
+      // calculate the fibbonacci to add to the cache
       cache.push(cache[cache.length - 1] + cache[cache.length - 2]);
     }
     return cache[index];
