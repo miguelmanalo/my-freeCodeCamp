@@ -564,5 +564,28 @@ function sumPrimes(num) {
   return primes.reduce((acc, cv) => acc + cv, 0);
 }
 
-console.log(sumPrimes(10)); // should return 17
-console.log(sumPrimes(977)); // should return 73156
+// console.log(sumPrimes(10)); // should return 17
+// console.log(sumPrimes(977)); // should return 73156
+
+/// //////////////////////////////////////////////////////////////////////
+// Smallest Common Multiple
+// https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/intermediate-algorithm-scripting/smallest-common-multiple
+
+// Find the smallest common multiple of the provided parameters that can be evenly divided by both, as well as by all sequential numbers in the range between these parameters.
+
+// The range will be an array of two numbers that will not necessarily be in numerical order.
+
+// For example, if given 1 and 3, find the smallest common multiple of both 1 and 3 that is also evenly divisible by all numbers between 1 and 3. The answer here would be 6.
+
+function smallestCommons(arr) {
+  
+  return arr;
+}
+
+console.log(smallestCommons([1, 5])); // 60
+console.log(smallestCommons([5, 1])); // 60
+console.log(smallestCommons([2, 10])); // 2520
+console.log(smallestCommons([1, 13])); // 360360
+console.log(smallestCommons([23, 18])); // 6056820
+
+/// //////////////////////////////////////////////////////////////////////
