@@ -541,34 +541,28 @@ function sumFibs(num) {
 function sumPrimes(num) {
   // declare an array to keep all the primes that are less than num, to be summed later
   const primes = [];
-  // write a funvtion ptimeFinder that finds the primes that are less than num
-  const primeFinder = (num) => {
+  // write a function primeFinder that finds the primes that are less than num
+  const primeFinder = (num1) => {
     // use two loops, i goes thru all the numbers up to num and j does the prime calculation
-    for (let i = 1; i <= num; i += 1) {
-      console.log(i);
+    for (let i = 2; i <= num1; i += 1) {
       // declare a counter to keep track of the number of divisors per j
-      let counter = 0;
-      for (let j = 1; j < i; j += 1) {
-        console.log(i % j);
+      let divisorCounter = 0;
+      for (let j = 1; j <= i; j += 1) {
         if (i % j === 0) {
-          counter += 1;
-          console.log(counter);
-        } else if (counter <= 1) {
-          primes.push(i);
-          console.log(primes);
+          // if a dvisior is found, increment the counter
+          divisorCounter += 1;
         }
+      }
+      // a prime only has two divisors
+      if (divisorCounter === 2) {
+        primes.push(i);
       }
     }
   };
   primeFinder(num);
-  console.log(primes);
-  // declare a variabnle to hold the sum
-  const theSum = primes.reduce((acc, cv) => {
-    return acc + cv;
-  }, 1);
-  // retyrnb tjhe newly filled variable
-  return theSum;
+  // return the sum of the collected primes
+  return primes.reduce((acc, cv) => acc + cv, 0);
 }
 
 console.log(sumPrimes(10)); // should return 17
-// console.log(sumPrimes(977)); // should return 73156
+console.log(sumPrimes(977)); // should return 73156
