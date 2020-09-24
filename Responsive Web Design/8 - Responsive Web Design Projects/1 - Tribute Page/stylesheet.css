@@ -1,0 +1,44 @@
+body {
+	background: #adb2d3;
+}
+
+h1 {
+	text-align: center;
+	font-family: sans-serif;
+}
+
+h2 {
+	text-align: center;
+	font-family: sans-serif;
+	padding: 15px 0px 15px 0px;
+}
+
+p {
+	text-align: center;
+	font-family: sans-serif;
+}
+
+#img-div {
+	text-align: center;
+	font-family: sans-serif;
+}
+
+#img {
+	max-width: 50%;
+	height: auto;
+}
+
+ul {
+	list-style-position: inside;
+  text-align: center;
+	font-family: sans-serif;
+}
+
+li {
+  text-align: center;
+	font-family: sans-serif;
+}
+
+.quote {
+	
+}
