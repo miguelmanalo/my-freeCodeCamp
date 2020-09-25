@@ -584,32 +584,40 @@ function smallestCommons(arr) {
   // multiple % 2 === 0
   // the two values are not necessarily given in sequential order
   // put the arguments in numerical order
-  const smallBig = arr.sort();
+  let smallBig;
+  if (arr[0] > arr[1]) {
+    smallBig = [arr[1], arr[0]];
+  } else {
+    smallBig = [arr[0], arr[1]];
+  }
   // make a while flag
-  let commMultiFound = false;
+  let commMultiFound;
   // start doing multiples of the larger number
   const multipleMaker = (num, multiplier) => num * multiplier;
   // start my loop from the smaller value
-  for (let i = 1; commMultiFound === false; i += 1) {
+  for (let i = 1; commMultiFound !== true; i += 1) {
     let sequentialDivisor = true;
     // if the multiple also works for the smaller number start doing mod checks on every sequential number starting
     // at plus one from the smaller argument
     if (multipleMaker(smallBig[1], i) % smallBig[0] === 0) {
+      // store the multiple somewhere so it doesn't have to be recalculated
+      const potentialMultiple = multipleMaker(smallBig[1], i);
       for (let j = smallBig[0] + 1; sequentialDivisor === true; j += 1) {
-        if (multipleMaker(smallBig[1], i) % j !== 0) {
+        // start checking the sequentials
+        if (potentialMultiple % j !== 0) {
+          // is a sequentail doesn't divide evenly, set the flag to false
           sequentialDivisor = false;
+          // if the iteration reaches the larger argument in the given array, return that multiple
         } else if (j === smallBig[1]) {
           return multipleMaker(smallBig[1], i);
         }
       }
     }
   }
-  // if the iteration reaches the larger argument, return that multiple
-  return arr;
 }
 
-console.log(smallestCommons([1, 5])); // 60
-console.log(smallestCommons([5, 1])); // 60
+// console.log(smallestCommons([1, 5])); // 60
+// console.log(smallestCommons([5, 1])); // 60
 // console.log(smallestCommons([2, 10])); // 2520
 // console.log(smallestCommons([1, 13])); // 360360
 // console.log(smallestCommons([23, 18])); // 6056820
