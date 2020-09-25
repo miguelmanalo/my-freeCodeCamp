@@ -578,14 +578,40 @@ function sumPrimes(num) {
 // For example, if given 1 and 3, find the smallest common multiple of both 1 and 3 that is also evenly divisible by all numbers between 1 and 3. The answer here would be 6.
 
 function smallestCommons(arr) {
-  
+  // so given an array with two values, i must find the single number that
+  // is a shared multiple of the two
+  // and also evenly divided by every number between the two values
+  // multiple % 2 === 0
+  // the two values are not necessarily given in sequential order
+  // put the arguments in numerical order
+  const smallBig = arr.sort();
+  // make a while flag
+  let commMultiFound = false;
+  // start doing multiples of the larger number
+  const multipleMaker = (num, multiplier) => num * multiplier;
+  // start my loop from the smaller value
+  for (let i = 1; commMultiFound === false; i += 1) {
+    let sequentialDivisor = true;
+    // if the multiple also works for the smaller number start doing mod checks on every sequential number starting
+    // at plus one from the smaller argument
+    if (multipleMaker(smallBig[1], i) % smallBig[0] === 0) {
+      for (let j = smallBig[0] + 1; sequentialDivisor === true; j += 1) {
+        if (multipleMaker(smallBig[1], i) % j !== 0) {
+          sequentialDivisor = false;
+        } else if (j === smallBig[1]) {
+          return multipleMaker(smallBig[1], i);
+        }
+      }
+    }
+  }
+  // if the iteration reaches the larger argument, return that multiple
   return arr;
 }
 
 console.log(smallestCommons([1, 5])); // 60
 console.log(smallestCommons([5, 1])); // 60
-console.log(smallestCommons([2, 10])); // 2520
-console.log(smallestCommons([1, 13])); // 360360
-console.log(smallestCommons([23, 18])); // 6056820
+// console.log(smallestCommons([2, 10])); // 2520
+// console.log(smallestCommons([1, 13])); // 360360
+// console.log(smallestCommons([23, 18])); // 6056820
 
 /// //////////////////////////////////////////////////////////////////////
