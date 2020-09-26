@@ -631,20 +631,55 @@ function smallestCommons(arr) {
 
 function dropElements(arr, func) {
   // iterate through the given arr
-  
-  // pass each item of the arr thru the callback
+  for (let i = 0, len = arr.length; i < len; i += 1) {
+    // pass each item of the arr thru the callback
+    // once callback returns a true, slice off that item and all the subsequent items
+    // return that slice
+    if (func(arr[i]) === true) return arr.slice(i);
+  }
+  // if ive iterated thru the whole array and never got a true, return a blank array
+  return [];
+}
 
-  // once callback returns a true, slice off that item and all the subsequent items 
+console.log(
+  dropElements([1, 2, 3, 4], function (n) {
+    return n >= 3;
+  })
+); // [3, 4]
+console.log(
+  dropElements([0, 1, 0, 1], function (n) {
+    return n === 1;
+  })
+); // [1, 0, 1]
+console.log(
+  dropElements([1, 2, 3], function (n) {
+    return n > 0;
+  })
+); // [1, 2, 3]
+console.log(
+  dropElements([1, 2, 3, 4], function (n) {
+    return n > 5;
+  })
+); // []
+console.log(
+  dropElements([1, 2, 3, 9, 2], function (n) {
+    return n > 2;
+  })
+); // [3, 9, 2]
 
-  // return that slice
+/// //////////////////////////////////////////////////////////////////////
+// Steamroller
+// https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/intermediate-algorithm-scripting/steamroller
+// Flatten a nested array. You must account for varying levels of nesting.
+// Your solution should not use the Array.prototype.flat() or Array.prototype.flatMap() methods.
+
+function steamrollArray(arr) {
   return arr;
 }
 
-console.log(dropElements([1, 2, 3, 4], function(n) {return n >= 3;})); // [3, 4]
-console.log(dropElements([0, 1, 0, 1], function(n) {return n === 1;})); // [1, 0, 1]
-console.log(dropElements([1, 2, 3], function(n) {return n > 0;})); // [1, 2, 3]
-console.log(dropElements([1, 2, 3, 4], function(n) {return n > 5;})); // []
-console.log(dropElements([1, 2, 3, 9, 2], function(n) {return n > 2;})); // [3, 9, 2]
-
+console.log(steamrollArray([[['a']], [['b']]])); // should return ["a", "b"].
+console.log(steamrollArray([1, [2], [3, [[4]]]])); // should return [1, 2, 3, 4].
+console.log(steamrollArray([1, [], [3, [[4]]]])); // should return [1, 3, 4].
+console.log(steamrollArray([1, {}, [3, [[4]]]])); // should return [1, {}, 3, 4].
 /// //////////////////////////////////////////////////////////////////////
 // 
