@@ -674,12 +674,52 @@ console.log(
 // Your solution should not use the Array.prototype.flat() or Array.prototype.flatMap() methods.
 
 function steamrollArray(arr) {
-  return arr;
+  // make an empty array to start off the return value
+  const answerArr = [];
+  // create a function that flattens an array and calls itself
+  const flattener = (arrNest) => {
+    // iterate through the nested array arg
+    for (let i = 0, len = arrNest.length; i < len; i += 1) {
+      // eslint-disable-next-line no-unused-expressions
+      // if the current item is an array, recursively call the falttener again
+      // if it's anything but an array, push it to the answer
+      Array.isArray(arrNest[i])
+        ? flattener(arrNest[i])
+        : answerArr.push(arrNest[i]);
+    }
+    // return the nwely filled array to the outer function scope
+    return answerArr;
+  };
+  // return the return value of calling flattener on the arg array
+  return flattener(arr);
 }
 
-console.log(steamrollArray([[['a']], [['b']]])); // should return ["a", "b"].
-console.log(steamrollArray([1, [2], [3, [[4]]]])); // should return [1, 2, 3, 4].
-console.log(steamrollArray([1, [], [3, [[4]]]])); // should return [1, 3, 4].
-console.log(steamrollArray([1, {}, [3, [[4]]]])); // should return [1, {}, 3, 4].
+// console.log(steamrollArray([[['a']], [['b']]])); // should return ["a", "b"]
+// console.log(steamrollArray([1, [2], [3, [[4]]]])); // should return [1, 2, 3, 4]
+// console.log(steamrollArray([1, [], [3, [[4]]]])); // should return [1, 3, 4]
+// console.log(steamrollArray([1, {}, [3, [[4]]]])); // should return [1, {}, 3, 4]
+
 /// //////////////////////////////////////////////////////////////////////
-// 
+// Binary Agents
+// https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/intermediate-algorithm-scripting/binary-agents
+// Return an English translated sentence of the passed binary string.
+
+// The binary string will be space separated.
+
+function binaryAgent(str) {
+  return str;
+}
+
+console.log(
+  binaryAgent(
+    '01000001 01110010 01100101 01101110 00100111 01110100 00100000 01100010 01101111 01101110 01100110 01101001 01110010 01100101 01110011 00100000 01100110 01110101 01101110 00100001 00111111'
+  )
+);
+// should return "Aren't bonfires fun!?"
+console.log(
+  binaryAgent(
+    '01001001 00100000 01101100 01101111 01110110 01100101 00100000 01000110 01110010 01100101 01100101 01000011 01101111 01100100 01100101 01000011 01100001 01101101 01110000 00100001'
+  )
+);
+// should return "I love FreeCodeCamp!"
+/// //////////////////////////////////////////////////////////////////////
