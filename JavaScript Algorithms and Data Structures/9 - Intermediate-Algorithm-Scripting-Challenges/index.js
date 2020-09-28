@@ -588,7 +588,7 @@ function smallestCommons(arr) {
   if (arr[0] > arr[1]) {
     smallBig = [arr[1], arr[0]];
   } else {
-    smallBig = [arr[0], arr[1]];
+    smallBig = arr;
   }
   // make a while flag
   let commMultiFound;
@@ -637,7 +637,7 @@ function dropElements(arr, func) {
     // return that slice
     if (func(arr[i]) === true) return arr.slice(i);
   }
-  // if ive iterated thru the whole array and never got a true, return a blank array
+  // if I've iterated thru the whole array and never got a true, return a blank array
   return [];
 }
 
@@ -680,14 +680,13 @@ function steamrollArray(arr) {
   const flattener = (arrNest) => {
     // iterate through the nested array arg
     for (let i = 0, len = arrNest.length; i < len; i += 1) {
-      // eslint-disable-next-line no-unused-expressions
-      // if the current item is an array, recursively call the falttener again
+      // if the current item is an array, recursively call the flattener again
       // if it's anything but an array, push it to the answer
       Array.isArray(arrNest[i])
         ? flattener(arrNest[i])
         : answerArr.push(arrNest[i]);
     }
-    // return the nwely filled array to the outer function scope
+    // return the newly filled array to the outer function scope
     return answerArr;
   };
   // return the return value of calling flattener on the arg array
@@ -707,19 +706,103 @@ function steamrollArray(arr) {
 // The binary string will be space separated.
 
 function binaryAgent(str) {
-  return str;
+  // declare an empty string to hold the answer
+  let answerStr = '';
+  // turn the str argument into an array so the characters are separated
+  const charArr = str.split(' ');
+  // then iterate through the array and turn the number into a base ten number with parseInt
+  for (let i = 0, len = charArr.length; i < len; i += 1) {
+    // turn that number into its ASCII character with fromCharCode
+    // and store that character in the empty string
+    answerStr += String.fromCharCode(parseInt(charArr[i], 2));
+  }
+  // return the string
+  return answerStr;
+}
+
+// console.log(
+//   binaryAgent(
+//     '01000001 01110010 01100101 01101110 00100111 01110100 00100000 01100010 01101111 01101110 01100110 01101001 01110010 01100101 01110011 00100000 01100110 01110101 01101110 00100001 00111111'
+//   )
+// );
+// // should return "Aren't bonfires fun!?"
+// console.log(
+//   binaryAgent(
+//     '01001001 00100000 01101100 01101111 01110110 01100101 00100000 01000110 01110010 01100101 01100101 01000011 01101111 01100100 01100101 01000011 01100001 01101101 01110000 00100001'
+//   )
+// );
+// should return "I love FreeCodeCamp!"
+/// //////////////////////////////////////////////////////////////////////
+// Everything Be True
+// https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/intermediate-algorithm-scripting/everything-be-true
+// Check if the predicate (second argument) is truthy on all elements of a collection (first argument).
+
+// In other words, you are given an array collection of objects. The predicate pre will be an object property and you need to return true if its value is truthy. Otherwise, return false.
+
+// In JavaScript, truthy values are values that translate to true when evaluated in a Boolean context.
+
+// Remember, you can access object properties through either dot notation or [] notation.
+
+function truthCheck(collection, pre) {
+  return pre;
 }
 
 console.log(
-  binaryAgent(
-    '01000001 01110010 01100101 01101110 00100111 01110100 00100000 01100010 01101111 01101110 01100110 01101001 01110010 01100101 01110011 00100000 01100110 01110101 01101110 00100001 00111111'
+  truthCheck(
+    [
+      { user: 'Tinky-Winky', sex: 'male' },
+      { user: 'Dipsy', sex: 'male' },
+      { user: 'Laa-Laa', sex: 'female' },
+      { user: 'Po', sex: 'female' },
+    ],
+    'sex'
   )
-);
-// should return "Aren't bonfires fun!?"
+); //  should return true.
 console.log(
-  binaryAgent(
-    '01001001 00100000 01101100 01101111 01110110 01100101 00100000 01000110 01110010 01100101 01100101 01000011 01101111 01100100 01100101 01000011 01100001 01101101 01110000 00100001'
+  truthCheck(
+    [
+      { user: 'Tinky-Winky', sex: 'male' },
+      { user: 'Dipsy' },
+      { user: 'Laa-Laa', sex: 'female' },
+      { user: 'Po', sex: 'female' },
+    ],
+    'sex'
   )
-);
-// should return "I love FreeCodeCamp!"
-/// //////////////////////////////////////////////////////////////////////
+); //  should return false.
+console.log(
+  truthCheck(
+    [
+      { user: 'Tinky-Winky', sex: 'male', age: 0 },
+      { user: 'Dipsy', sex: 'male', age: 3 },
+      { user: 'Laa-Laa', sex: 'female', age: 5 },
+      { user: 'Po', sex: 'female', age: 4 },
+    ],
+    'age'
+  )
+); //  should return false.
+console.log(
+  truthCheck(
+    [
+      { name: 'Pete', onBoat: true },
+      { name: 'Repeat', onBoat: true },
+      { name: 'FastForward', onBoat: null },
+    ],
+    'onBoat'
+  )
+); //  should return false
+console.log(
+  truthCheck(
+    [
+      { name: 'Pete', onBoat: true },
+      { name: 'Repeat', onBoat: true, alias: 'Repete' },
+      { name: 'FastForward', onBoat: true },
+    ],
+    'onBoat'
+  )
+); //  should return true
+console.log(truthCheck([{ single: 'yes' }], 'single')); //  should return true
+console.log(truthCheck([{ single: '' }, { single: 'double' }], 'single')); //  should return false
+console.log(
+  truthCheck([{ single: 'double' }, { single: undefined }], 'single')
+); //  should return false
+console.log(truthCheck([{ single: 'double' }, { single: NaN }], 'single')); //  should return false
