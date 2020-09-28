@@ -744,65 +744,100 @@ function binaryAgent(str) {
 // Remember, you can access object properties through either dot notation or [] notation.
 
 function truthCheck(collection, pre) {
-  return pre;
+  // declare a counter at 0 to track matches
+  let counter = 0;
+  // iterate thru the given array arg
+  for (let i = 0, len = collection.length; i < len; i += 1) {
+    // if object[pre] is truthy increment the counter
+    if (collection[i][pre]) counter += 1;
+  }
+  // if the counter is equal to the length of collection, return true
+  return counter === collection.length;
 }
 
-console.log(
-  truthCheck(
-    [
-      { user: 'Tinky-Winky', sex: 'male' },
-      { user: 'Dipsy', sex: 'male' },
-      { user: 'Laa-Laa', sex: 'female' },
-      { user: 'Po', sex: 'female' },
-    ],
-    'sex'
-  )
-); //  should return true.
-console.log(
-  truthCheck(
-    [
-      { user: 'Tinky-Winky', sex: 'male' },
-      { user: 'Dipsy' },
-      { user: 'Laa-Laa', sex: 'female' },
-      { user: 'Po', sex: 'female' },
-    ],
-    'sex'
-  )
-); //  should return false.
-console.log(
-  truthCheck(
-    [
-      { user: 'Tinky-Winky', sex: 'male', age: 0 },
-      { user: 'Dipsy', sex: 'male', age: 3 },
-      { user: 'Laa-Laa', sex: 'female', age: 5 },
-      { user: 'Po', sex: 'female', age: 4 },
-    ],
-    'age'
-  )
-); //  should return false.
-console.log(
-  truthCheck(
-    [
-      { name: 'Pete', onBoat: true },
-      { name: 'Repeat', onBoat: true },
-      { name: 'FastForward', onBoat: null },
-    ],
-    'onBoat'
-  )
-); //  should return false
-console.log(
-  truthCheck(
-    [
-      { name: 'Pete', onBoat: true },
-      { name: 'Repeat', onBoat: true, alias: 'Repete' },
-      { name: 'FastForward', onBoat: true },
-    ],
-    'onBoat'
-  )
-); //  should return true
-console.log(truthCheck([{ single: 'yes' }], 'single')); //  should return true
-console.log(truthCheck([{ single: '' }, { single: 'double' }], 'single')); //  should return false
-console.log(
-  truthCheck([{ single: 'double' }, { single: undefined }], 'single')
-); //  should return false
-console.log(truthCheck([{ single: 'double' }, { single: NaN }], 'single')); //  should return false
+// console.log(
+//   truthCheck(
+//     [
+//       { user: 'Tinky-Winky', sex: 'male' },
+//       { user: 'Dipsy', sex: 'male' },
+//       { user: 'Laa-Laa', sex: 'female' },
+//       { user: 'Po', sex: 'female' },
+//     ],
+//     'sex'
+//   )
+// ); //  should return true.
+// console.log(
+//   truthCheck(
+//     [
+//       { user: 'Tinky-Winky', sex: 'male' },
+//       { user: 'Dipsy' },
+//       { user: 'Laa-Laa', sex: 'female' },
+//       { user: 'Po', sex: 'female' },
+//     ],
+//     'sex'
+//   )
+// ); //  should return false.
+// console.log(
+//   truthCheck(
+//     [
+//       { user: 'Tinky-Winky', sex: 'male', age: 0 },
+//       { user: 'Dipsy', sex: 'male', age: 3 },
+//       { user: 'Laa-Laa', sex: 'female', age: 5 },
+//       { user: 'Po', sex: 'female', age: 4 },
+//     ],
+//     'age'
+//   )
+// ); //  should return false.
+// console.log(
+//   truthCheck(
+//     [
+//       { name: 'Pete', onBoat: true },
+//       { name: 'Repeat', onBoat: true },
+//       { name: 'FastForward', onBoat: null },
+//     ],
+//     'onBoat'
+//   )
+// ); //  should return false
+// console.log(
+//   truthCheck(
+//     [
+//       { name: 'Pete', onBoat: true },
+//       { name: 'Repeat', onBoat: true, alias: 'Repete' },
+//       { name: 'FastForward', onBoat: true },
+//     ],
+//     'onBoat'
+//   )
+// ); //  should return true
+// console.log(truthCheck([{ single: 'yes' }], 'single')); //  should return true
+// console.log(truthCheck([{ single: '' }, { single: 'double' }], 'single')); //  should return false
+// console.log(
+//   truthCheck([{ single: 'double' }, { single: undefined }], 'single')
+// ); //  should return false
+// console.log(truthCheck([{ single: 'double' }, { single: NaN }], 'single')); //  should return false
+/// //////////////////////////////////////////////////////////////////////
+// Arguments Optional
+// https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/intermediate-algorithm-scripting/arguments-optional
+// Create a function that sums two arguments together. If only one argument is provided, then return a function that expects one argument and returns the sum.
+
+// For example, addTogether(2, 3) should return 5, and addTogether(2) should return a function.
+
+// Calling this returned function with a single argument will then return the sum:
+
+// var sumTwoAnd = addTogether(2);
+
+// sumTwoAnd(3) returns 5.
+
+// If either argument isn't a valid number, return undefined.
+
+function addTogether() {
+  return false;
+}
+
+console.log(addTogether(2, 3)); //  should return 5.
+console.log(addTogether(23, 30)); //  should return 53.
+// console.log(addTogether(5)(7)); //  should return 12.
+console.log(addTogether("http://bit.ly/IqT6zt")); //  should return undefined.
+console.log(addTogether(2, "3")); //  should return undefined.
+// console.log(addTogether(2)([3])); //  should return undefined.
+/// //////////////////////////////////////////////////////////////////////
+// 
