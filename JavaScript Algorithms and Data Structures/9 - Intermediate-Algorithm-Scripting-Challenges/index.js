@@ -814,6 +814,7 @@ function truthCheck(collection, pre) {
 //   truthCheck([{ single: 'double' }, { single: undefined }], 'single')
 // ); //  should return false
 // console.log(truthCheck([{ single: 'double' }, { single: NaN }], 'single')); //  should return false
+
 /// //////////////////////////////////////////////////////////////////////
 // Arguments Optional
 // https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/intermediate-algorithm-scripting/arguments-optional
@@ -829,15 +830,24 @@ function truthCheck(collection, pre) {
 
 // If either argument isn't a valid number, return undefined.
 
-function addTogether() {
-  return false;
+function addTogether(...args) {
+  // use the every array method and if either argument isn't a valid number return undefined
+  const isNum = (item) => typeof item === 'number';
+  if (args.every(isNum) === false) return undefined;
+  // invoking addT with just one argument returns a function and makes a closure for that func
+  const innerFunc = (num2) => {
+    return args[0] + num2; // invoking the returned function with one argument returns the sum
+  };
+  if (args.length === 1) {
+    return innerFunc;
+  }
+  return args.reduce((acc, cv) => acc + cv, 0); // invoking addT with two valid arguments returns the sum
 }
 
-console.log(addTogether(2, 3)); //  should return 5.
-console.log(addTogether(23, 30)); //  should return 53.
-// console.log(addTogether(5)(7)); //  should return 12.
+console.log(addTogether(2, 3)); //  should return 5
+console.log(addTogether(23, 30)); //  should return 53
+console.log(addTogether(5)(7)); //  should return 12
 console.log(addTogether("http://bit.ly/IqT6zt")); //  should return undefined.
-console.log(addTogether(2, "3")); //  should return undefined.
-// console.log(addTogether(2)([3])); //  should return undefined.
+console.log(addTogether(2, '3')); //  should return undefined.
+console.log(addTogether(2, [3])); //  should return undefined.
 /// //////////////////////////////////////////////////////////////////////
-// 
