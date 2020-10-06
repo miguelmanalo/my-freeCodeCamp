@@ -852,6 +852,7 @@ function addTogether(...args) {
 // console.log(addTogether("http://bit.ly/IqT6zt")); //  should return undefined
 // console.log(addTogether(2, '3')); //  should return undefined
 // console.log(addTogether(2)([3])); //  should return undefined
+
 /// //////////////////////////////////////////////////////////////////////
 // Make a Person
 // https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/intermediate-algorithm-scripting/make-a-person
@@ -863,30 +864,64 @@ function addTogether(...args) {
 // setFirstName(first)
 // setLastName(last)
 // setFullName(firstAndLast)
+
 // Run the tests to see the expected output for each method. The methods that take an argument must accept only one argument and it has to be a string. These methods must be the only available means of interacting with the object.
 
-var Person = function(firstAndLast) {
+const Person = function (firstAndLast) {
   // Only change code below this line
   // Complete the method below and implement the others similarly
-  this.getFullName = function() {
-    return "";
+  // make a copy of the argument so it can be mutated
+  const nameGiven = firstAndLast.split(' ');
+
+  this.getFullName = function () {
+    // set the first and last name from the argument
+    return `${nameGiven[0]} ${nameGiven[1]}`;
   };
+
+  this.getFirstName = function () {
+    return `${nameGiven[0]}`;
+  };
+
+  this.getLastName = function () {
+    return `${nameGiven[1]}`;
+  };
+
+  this.setFirstName = function (newFirst) {
+    nameGiven[0] = newFirst;
+  };
+
+  this.setLastName = function (newLast) {
+    nameGiven[1] = newLast;
+  };
+
+  this.setFullName = function (newWholeName) {
+    const newSplitName = newWholeName.split(' ');
+    nameGiven[0] = newSplitName[0];
+    nameGiven[1] = newSplitName[1];
+  };
+
   return firstAndLast;
 };
 
-var bob = new Person('Bob Ross');
-console.log(bob);
-bob.getFullName();
+// const bob = new Person('Bob Ross');
+// console.log(bob);
+// bob.getFullName();
 
-console.log(Object.keys(bob).length); //  should return 6.
-console.log(bob instanceof Person); //  should return true.
-console.log(bob.firstName); //  should return undefined.
-console.log(bob.lastName); //  should return undefined.
-console.log(bob.getFirstName()); //  should return "Bob".
-console.log(bob.getLastName()); //  should return "Ross".
-console.log(bob.getFullName()); //  should return "Bob Ross".
-console.log(bob.getFullName()); // ); //  should return "Haskell Ross" after bob.setFirstName("Haskell").
-console.log(bob.getFullName()); //  should return "Haskell Curry" after bob.setLastName("Curry").
-console.log(bob.getFullName()); //  should return "Haskell Curry" after bob.setFullName("Haskell Curry").
-console.log(bob.getFirstName()); //  should return "Haskell" after bob.setFullName("Haskell Curry").
-console.log(bob.getLastName()); //  should return "Curry" after bob.setFullName("Haskell Curry").
+// console.log(Object.keys(bob).length); // should return 6
+// console.log(bob instanceof Person); // should return true
+// console.log(bob.firstName); // should return undefined
+// console.log(bob.lastName); // should return undefined
+// console.log(bob.getFirstName()); // should return "Bob"
+// console.log(bob.getLastName()); // should return "Ross"
+// console.log(bob.getFullName()); // should return "Bob Ross"
+// // bob.setFirstName('Haskell');
+// console.log(bob.getFullName()); // should return "Haskell Ross" after bob.setFirstName("Haskell")
+// // bob.setLastName('Curry');
+// console.log(bob.getFullName()); // should return "Haskell Curry" after bob.setLastName("Curry")
+// bob.setFullName('Haskell Curry');
+// console.log(bob.getFullName()); // should return "Haskell Curry" after bob.setFullName("Haskell Curry")
+// console.log(bob.getFirstName()); // should return "Haskell" after bob.setFullName("Haskell Curry")
+// console.log(bob.getLastName()); // should return "Curry" after bob.setFullName("Haskell Curry")
+
+/// //////////////////////////////////////////////////////////////////////
+// 
